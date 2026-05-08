@@ -1,0 +1,38 @@
+{
+  "id": "tv.litebox.plugin.tmdb",
+  "name": "TMDB Scraper",
+  "version": "1.0.0",
+  "author": "LiteBox",
+  "description": "Fetches metadata and artwork from The Movie Database (TMDB).",
+  "type": "SCRAPER",
+  "minAppVersion": "0.1.0",
+  "provides": ["metadata", "artwork"],
+  "entrypoint": "https://api.themoviedb.org/3",
+  "apiVersion": 1,
+  "license": "Apache-2.0",
+  "settingsSchema": [
+    {
+      "key": "api_key",
+      "label": "API Key",
+      "type": "PASSWORD",
+      "required": true,
+      "hint": "Your TMDB API key (v3 auth)"
+    },
+    {
+      "key": "language",
+      "label": "Preferred Language",
+      "type": "SELECT",
+      "defaultValue": "en",
+      "required": false,
+      "hint": "Language for metadata results"
+    },
+    {
+      "key": "include_adult",
+      "label": "Include Adult Content",
+      "type": "BOOLEAN",
+      "defaultValue": "false",
+      "required": false,
+      "hint": "Include adult titles in search results"
+    }
+  ]
+}

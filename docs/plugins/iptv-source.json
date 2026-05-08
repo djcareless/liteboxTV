@@ -1,0 +1,29 @@
+{
+  "id": "tv.litebox.plugin.iptv",
+  "name": "IPTV Source",
+  "version": "1.0.0",
+  "author": "LiteBox",
+  "description": "Loads IPTV channels from M3U playlists and EPG guides.",
+  "type": "SOURCE",
+  "minAppVersion": "0.1.0",
+  "provides": ["video", "epg"],
+  "entrypoint": "local://iptv-parser",
+  "apiVersion": 1,
+  "license": "Apache-2.0",
+  "settingsSchema": [
+    {
+      "key": "playlist_url",
+      "label": "Playlist URL",
+      "type": "TEXT",
+      "required": true,
+      "hint": "URL to an M3U/M3U8 playlist file"
+    },
+    {
+      "key": "epg_url",
+      "label": "EPG URL",
+      "type": "TEXT",
+      "required": false,
+      "hint": "URL to an XMLTV EPG file"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "tv.litebox.plugin.tvdb",
+  "name": "TVDB Scraper",
+  "version": "1.0.0",
+  "author": "LiteBox",
+  "description": "Fetches metadata, artwork, and ratings from TheTVDB.",
+  "type": "SCRAPER",
+  "minAppVersion": "0.1.0",
+  "provides": ["metadata", "artwork", "ratings"],
+  "entrypoint": "https://api4.thetvdb.com/v4",
+  "apiVersion": 1,
+  "license": "Apache-2.0",
+  "settingsSchema": [
+    {
+      "key": "api_key",
+      "label": "API Key",
+      "type": "PASSWORD",
+      "required": true,
+      "hint": "Your TVDB API key"
+    },
+    {
+      "key": "pin",
+      "label": "Subscriber Pin",
+      "type": "PASSWORD",
+      "required": false,
+      "hint": "TVDB subscriber pin for premium features"
+    }
+  ]
+}
