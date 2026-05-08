@@ -16,6 +16,9 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "0.1.0"
+
+        // Keep bundled resources lean for Firestick-class hardware.
+        resourceConfigurations += listOf("en")
     }
 
     buildTypes {
@@ -36,6 +39,32 @@ android {
     buildFeatures {
         compose = true
         buildConfig = true
+        aidl = false
+        renderScript = false
+        shaders = false
+    }
+
+    packaging {
+        jniLibs {
+            useLegacyPackaging = false
+        }
+        resources {
+            excludes += setOf(
+                "/META-INF/{AL2.0,LGPL2.1}",
+                "META-INF/LICENSE*",
+                "META-INF/NOTICE*",
+                "META-INF/*.kotlin_module",
+            )
+        }
+    }
+
+    dependenciesInfo {
+        includeInApk = false
+        includeInBundle = false
+    }
+
+    lint {
+        disable += "NullSafeMutableLiveData"
     }
 
     compileOptions {

@@ -19,7 +19,7 @@ import tv.litebox.data.db.entity.PluginEntity
         PluginEntity::class,
     ],
     version = 1,
-    exportSchema = true,
+    exportSchema = false,
 )
 @TypeConverters(Converters::class)
 abstract class LiteBoxDatabase : RoomDatabase() {
