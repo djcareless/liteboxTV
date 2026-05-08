@@ -46,6 +46,11 @@
             </intent-filter>
         </activity>
 
+        <!-- Media Scanner Service -->
+        <service
+            android:name=".data.scanner.MediaScannerService"
+            android:exported="false" />
+
         <!-- Plugin Install handler: accept APK/manifest URLs via intent -->
         <activity
             android:name=".plugin.PluginInstallActivity"

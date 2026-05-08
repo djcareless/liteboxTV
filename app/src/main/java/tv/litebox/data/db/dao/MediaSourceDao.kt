@@ -12,6 +12,9 @@ interface MediaSourceDao {
     @Query("SELECT * FROM media_sources WHERE id = :id")
     suspend fun getById(id: String): MediaSourceEntity?
 
+    @Query("SELECT * FROM media_sources WHERE scanEnabled = 1 ORDER BY name ASC")
+    suspend fun getAllScannable(): List<MediaSourceEntity>
+
     @Upsert
     suspend fun upsert(source: MediaSourceEntity)
 
