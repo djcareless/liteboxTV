@@ -1,0 +1,29 @@
+{
+  "id": "tv.litebox.plugin.demo",
+  "name": "Demo Source Plugin",
+  "version": "1.0.0",
+  "author": "LiteBox",
+  "description": "A sample source plugin that demonstrates the plugin manifest format.",
+  "type": "SOURCE",
+  "minAppVersion": "0.1.0",
+  "provides": ["video"],
+  "entrypoint": "https://example.com/litebox-demo-plugin/api",
+  "apiVersion": 1,
+  "license": "Apache-2.0",
+  "settingsSchema": [
+    {
+      "key": "api_key",
+      "label": "API Key",
+      "type": "PASSWORD",
+      "required": false,
+      "hint": "Optional API key for authenticated sources"
+    },
+    {
+      "key": "quality",
+      "label": "Preferred Quality",
+      "type": "SELECT",
+      "defaultValue": "1080p",
+      "required": false
+    }
+  ]
+}
