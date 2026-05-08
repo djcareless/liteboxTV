@@ -2,14 +2,14 @@ package tv.litebox.ui.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.tv.foundation.lazy.list.TvLazyColumn
-import androidx.tv.foundation.lazy.list.TvLazyRow
-import androidx.tv.foundation.lazy.list.items
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 import tv.litebox.ui.components.MediaCard
@@ -51,7 +51,7 @@ fun HomeScreen(
         )
 
         // Content area
-        TvLazyColumn(
+        LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(horizontal = 32.dp, vertical = 24.dp),
@@ -75,7 +75,7 @@ fun HomeScreen(
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.padding(bottom = 12.dp),
                     )
-                    TvLazyRow(
+                    LazyRow(
                         horizontalArrangement = Arrangement.spacedBy(16.dp),
                     ) {
                         items(uiState.continueWatching) { item ->
@@ -98,7 +98,7 @@ fun HomeScreen(
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.padding(bottom = 12.dp),
                     )
-                    TvLazyRow(
+                    LazyRow(
                         horizontalArrangement = Arrangement.spacedBy(16.dp),
                     ) {
                         items(uiState.recentMovies) { item ->
@@ -120,7 +120,7 @@ fun HomeScreen(
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.padding(bottom = 12.dp),
                     )
-                    TvLazyRow(
+                    LazyRow(
                         horizontalArrangement = Arrangement.spacedBy(16.dp),
                     ) {
                         items(uiState.recentTvShows) { item ->

@@ -8,12 +8,12 @@ plugins {
 
 android {
     namespace = "tv.litebox"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "tv.litebox"
-        minSdk = 21          // Fire TV Gen 1+
-        targetSdk = 34
+        minSdk = 23          // Android TV (Fire TV Gen 1+ supports 23+)
+        targetSdk = 35
         versionCode = 1
         versionName = "0.1.0"
     }
@@ -71,6 +71,7 @@ dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.material.icons)
+    implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.activity.compose)
     debugImplementation(libs.androidx.compose.ui.tooling)
 

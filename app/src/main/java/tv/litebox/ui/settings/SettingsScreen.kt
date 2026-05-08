@@ -2,11 +2,11 @@ package tv.litebox.ui.settings
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.tv.foundation.lazy.list.TvLazyColumn
-import androidx.tv.foundation.lazy.list.items
 import androidx.tv.material3.*
 import tv.litebox.LiteBoxApp
 
@@ -36,7 +36,7 @@ fun SettingsScreen(onBack: () -> Unit) {
             modifier = Modifier.padding(bottom = 16.dp),
         )
 
-        TvLazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             items(themeManager.builtinThemes) { theme ->
                 val selected = theme.id == currentTheme.id
                 Card(
