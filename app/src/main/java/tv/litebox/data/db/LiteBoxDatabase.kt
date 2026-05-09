@@ -18,7 +18,7 @@ import tv.litebox.data.db.entity.PluginEntity
         MediaSourceEntity::class,
         PluginEntity::class,
     ],
-    version = 1,
+    version = 2,
     exportSchema = false,
 )
 @TypeConverters(Converters::class)

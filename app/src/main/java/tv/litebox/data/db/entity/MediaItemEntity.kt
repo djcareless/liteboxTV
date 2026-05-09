@@ -22,6 +22,12 @@ data class MediaItemEntity(
     val resumePosition: Long,
     val watched: Boolean,
     val addedAt: Long,
+
+    // ── Scraper-enriched metadata (RAI-64) ─────────────────────
+    val posterUrl: String? = null,
+    val overview: String? = null,
+    val externalId: String? = null,
+    val scrapedAt: Long? = null,
 ) {
     fun toDomain() = MediaItem(
         id = id, title = title,
@@ -32,6 +38,10 @@ data class MediaItemEntity(
         genres = genres, sourcePlugin = sourcePlugin,
         resumePosition = resumePosition, watched = watched,
         addedAt = addedAt,
+        posterUrl = posterUrl,
+        overview = overview,
+        externalId = externalId,
+        scrapedAt = scrapedAt,
     )
 
     companion object {
@@ -44,6 +54,10 @@ data class MediaItemEntity(
             genres = item.genres, sourcePlugin = item.sourcePlugin,
             resumePosition = item.resumePosition, watched = item.watched,
             addedAt = item.addedAt,
+            posterUrl = item.posterUrl,
+            overview = item.overview,
+            externalId = item.externalId,
+            scrapedAt = item.scrapedAt,
         )
     }
 }

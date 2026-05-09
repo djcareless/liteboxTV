@@ -20,6 +20,16 @@ data class MediaItem(
     val resumePosition: Long = 0L,      // ms
     val watched: Boolean = false,
     val addedAt: Long = System.currentTimeMillis(),
+
+    // ── Scraper-enriched metadata (RAI-64) ─────────────────────
+    /** Poster image URL from scraper (e.g. TMDB poster) */
+    val posterUrl: String? = null,
+    /** Synopsis / overview from scraper */
+    val overview: String? = null,
+    /** External ID from scraper source (e.g. TMDB movie ID) */
+    val externalId: String? = null,
+    /** Timestamp of last successful scrape */
+    val scrapedAt: Long? = null,
 )
 
 @Serializable

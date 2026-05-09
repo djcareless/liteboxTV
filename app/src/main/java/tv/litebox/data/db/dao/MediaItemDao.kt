@@ -33,6 +33,30 @@ interface MediaItemDao {
     @Query("UPDATE media_items SET watched = 1, resumePosition = 0 WHERE id = :id")
     suspend fun markWatched(id: String)
 
+    // ── Scraper-enriched metadata update (RAI-64) ──────────────
+
+    @Query("""
+        UPDATE media_items
+        SET posterUrl = :posterUrl,
+            backdropUrl = :backdropUrl,
+            rating = :rating,
+            overview = :overview,
+            genres = :genres,
+            externalId = :externalId,
+            scrapedAt = :scrapedAt
+        WHERE id = :id
+    """)
+    suspend fun updateScraperMetadata(
+        id: String,
+        posterUrl: String?,
+        backdropUrl: String?,
+        rating: Float?,
+        overview: String?,
+        genres: List<String>,
+        externalId: String?,
+        scrapedAt: Long,
+    )
+
     @Delete
     suspend fun delete(item: MediaItemEntity)
 

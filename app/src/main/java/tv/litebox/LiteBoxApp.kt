@@ -4,6 +4,7 @@ import android.app.Application
 import android.os.StrictMode
 import tv.litebox.data.db.LiteBoxDatabase
 import tv.litebox.plugin.PluginManager
+import tv.litebox.plugin.ScraperPluginFactory
 import tv.litebox.theme.ThemeManager
 
 class LiteBoxApp : Application() {
@@ -12,6 +13,9 @@ class LiteBoxApp : Application() {
         private set
 
     lateinit var pluginManager: PluginManager
+        private set
+
+    lateinit var scraperPluginFactory: ScraperPluginFactory
         private set
 
     lateinit var themeManager: ThemeManager
@@ -34,6 +38,7 @@ class LiteBoxApp : Application() {
 
         database = LiteBoxDatabase.getInstance(this)
         pluginManager = PluginManager(this)
+        scraperPluginFactory = ScraperPluginFactory(pluginManager)
         themeManager = ThemeManager(this)
     }
 
