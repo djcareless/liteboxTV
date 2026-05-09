@@ -70,6 +70,14 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.1
 # Test
 junit = { group = "junit", name = "junit", version = "4.13.2" }
 kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref = "kotlin" }
+mockk = { group = "io.mockk", name = "mockk", version = "1.13.11" }
+mockk-android = { group = "io.mockk", name = "mockk-android", version = "1.13.11" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
+turbine = { group = "app.cash.turbine", name = "turbine", version = "1.1.0" }
+androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version = "1.2.1" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version = "3.6.1" }
+androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
