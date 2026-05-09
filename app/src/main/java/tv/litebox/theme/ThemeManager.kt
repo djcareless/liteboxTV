@@ -17,14 +17,14 @@ class ThemeManager(private val context: Context) {
 
     private val json = Json { ignoreUnknownKeys = true; isLenient = true }
 
-    private val _currentTheme = MutableStateFlow(loadActiveTheme())
-    val currentTheme: StateFlow<ThemeManifest> = _currentTheme.asStateFlow()
-
-    /** All built-in themes */
+    /** All built-in themes — must be initialized before _currentTheme */
     val builtinThemes: List<ThemeManifest> = listOf(
         DarkDefaultTheme,
         BlueSteelTheme,
     )
+
+    private val _currentTheme = MutableStateFlow(loadActiveTheme())
+    val currentTheme: StateFlow<ThemeManifest> = _currentTheme.asStateFlow()
 
     fun setTheme(themeId: String) {
         val theme = builtinThemes.firstOrNull { it.id == themeId }
