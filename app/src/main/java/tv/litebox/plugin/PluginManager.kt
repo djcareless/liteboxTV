@@ -88,4 +88,8 @@ class PluginManager(private val context: Context) {
     suspend fun updateSettings(pluginId: String, settings: Map<String, String>) {
         db.pluginDao().updateSettings(pluginId, settings)
     }
+
+    /** Fetch all enabled plugins once (not a Flow). */
+    suspend fun getEnabledPlugins(): List<InstalledPlugin> =
+        db.pluginDao().getEnabled().map { it.toDomain() }
 }

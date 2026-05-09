@@ -12,6 +12,9 @@ interface PluginDao {
     @Query("SELECT * FROM plugins WHERE enabled = 1 ORDER BY installedAt DESC")
     fun observeEnabled(): Flow<List<PluginEntity>>
 
+    @Query("SELECT * FROM plugins WHERE enabled = 1 ORDER BY installedAt DESC")
+    suspend fun getEnabled(): List<PluginEntity>
+
     @Query("SELECT * FROM plugins WHERE id = :id")
     suspend fun getById(id: String): PluginEntity?
 
