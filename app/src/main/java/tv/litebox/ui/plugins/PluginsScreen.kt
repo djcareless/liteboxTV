@@ -40,6 +40,7 @@ import tv.litebox.domain.model.InstalledPlugin
 @Composable
 fun PluginsScreen(
     onBack: () -> Unit,
+    onPluginClick: (pluginId: String) -> Unit = {},
     vm: PluginsViewModel = viewModel(),
 ) {
     val plugins by vm.plugins.collectAsState()
@@ -93,6 +94,7 @@ fun PluginsScreen(
                 plugins = plugins,
                 onToggle = { plugin -> vm.togglePlugin(plugin.manifest.id, !plugin.enabled) },
                 onRemove = { plugin -> vm.removePlugin(plugin.manifest.id) },
+                onClick = { plugin -> onPluginClick(plugin.manifest.id) },
             )
             1 -> RegistryTab(
                 entries = vm.registryPlugins,
@@ -162,6 +164,7 @@ private fun InstalledPluginsTab(
     plugins: List<InstalledPlugin>,
     onToggle: (InstalledPlugin) -> Unit,
     onRemove: (InstalledPlugin) -> Unit,
+    onClick: (InstalledPlugin) -> Unit,
 ) {
     if (plugins.isEmpty()) {
         EmptyState("No plugins installed. Browse featured plugins or install one by URL.")
@@ -172,6 +175,7 @@ private fun InstalledPluginsTab(
                     plugin = plugin,
                     onToggle = { onToggle(plugin) },
                     onRemove = { onRemove(plugin) },
+                    onClick = { onClick(plugin) },
                 )
             }
         }
@@ -260,9 +264,10 @@ private fun PluginRow(
     plugin: InstalledPlugin,
     onToggle: () -> Unit,
     onRemove: () -> Unit,
+    onClick: () -> Unit,
 ) {
     Card(
-        onClick = {},
+        onClick = onClick,
         modifier = Modifier.fillMaxWidth(),
     ) {
         Row(

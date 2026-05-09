@@ -11,6 +11,7 @@ import tv.litebox.theme.LiteBoxTheme
 import tv.litebox.ui.home.HomeScreen
 import tv.litebox.ui.library.LibraryScreen
 import tv.litebox.ui.player.PlayerScreen
+import tv.litebox.ui.plugins.PluginDetailScreen
 import tv.litebox.ui.plugins.PluginsScreen
 import tv.litebox.ui.settings.SettingsScreen
 
@@ -19,10 +20,12 @@ object Routes {
     const val LIBRARY = "library/{sourceType}"
     const val PLAYER = "player/{mediaId}"
     const val PLUGINS = "plugins"
+    const val PLUGIN_DETAIL = "plugin/{pluginId}"
     const val SETTINGS = "settings"
 
     fun library(type: String) = "library/$type"
     fun player(mediaId: String) = "player/$mediaId"
+    fun pluginDetail(pluginId: String) = "plugin/$pluginId"
 }
 
 @Composable
@@ -65,7 +68,20 @@ fun LiteBoxNavHost(theme: ThemeManifest) {
             }
 
             composable(Routes.PLUGINS) {
-                PluginsScreen(onBack = { navController.popBackStack() })
+                PluginsScreen(
+                    onBack = { navController.popBackStack() },
+                    onPluginClick = { pluginId -> navController.navigate(Routes.pluginDetail(pluginId)) },
+                )
+            }
+
+            composable(
+                route = Routes.PLUGIN_DETAIL,
+                arguments = listOf(navArgument("pluginId") { type = NavType.StringType }),
+            ) { backStack ->
+                PluginDetailScreen(
+                    pluginId = backStack.arguments?.getString("pluginId") ?: "",
+                    onBack = { navController.popBackStack() },
+                )
             }
 
             composable(Routes.SETTINGS) {
